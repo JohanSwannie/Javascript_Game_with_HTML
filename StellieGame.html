@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Author: Johan Swan - Title: Stellie's Guess & Memory Game</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/petit-formal-script" type="text/css" />
+  <link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/butler-stencil" type="text/css" />
+  <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+  <style>
+    .blocksman button {
+      width: 64px;
+      height: 64px;
+      background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);
+      /*background-color: powderblue;*/
+      color: black;
+      border: 4px solid red;
+      border-radius: 33%;
+      margin: 1px;
+      text-align: center;
+      font-size: 40px;
+    }
+
+    #jumbo1 {
+      background-color: pink;
+      border-radius: 15%;
+      border: 20px solid green;
+      margin-left: 0px;
+      margin-right: 0px;
+      margin-bottom: 0px;
+      margin-top: 0px;
+    }
+
+    #h2u {
+      font-family: 'PetitFormalScriptRegular';
+      font-weight: normal;
+      font-style: normal;
+      color: purple;
+      padding-bottom: 4px;
+    }
+
+    #strules {
+      font-family: 'Righteous', cursive;
+      font-weight: normal;
+      font-style: normal;
+      color: 22px solid navy;
+    }
+
+
+    #h4js {
+      font-family: 'ButlerStencilRegular';
+      font-weight: normal;
+      font-style: normal;
+      font-size: 15px solid navy;
+      margin-top: 1px;
+    }
+
+    #h4u {
+      color: 20px solid navy;
+      font-size: 21px;
+      padding-top: 7px;
+    }
+
+    #buttons12 {
+      width: 2200px;
+      height: 60px;
+      font: solid black;
+      font-size: 19px;
+      margin-bottom: 1px;
+    }
+
+    .startButton, .myButton {
+      border: 3px solid olive;
+      border-radius: 20%;
+      background-color: powderblue;
+    }
+
+    #rulesOgame {
+      font-family: 'ZCOOL XiaoWei', serif;
+      font-size: 35px solid navy;
+      background-color: lightgreen;
+      border-radius: 45%;
+      border: 9px solid cyan;
+      margin-left: 10px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      margin-top: 10px;
+      padding-left: 2px;
+      padding-top: 2px;
+      padding-right: 2px;
+      padding-bottom: 2px;
+    }
+
+    @-webkit-keyframes rotate {
+      from {
+      -webkit-transform: rotate(0deg);
+     }
+     to {
+       -webkit-transform: rotate(360deg);
+      }
+    }
+
+    #img1 {
+        border-radius: 63%;
+        float: left;
+        -webkit-animation-name:            rotate;
+        -webkit-animation-duration:        10.0s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+    }
+
+    #img2 {
+        border-radius: 63%;
+        float: right;
+        -webkit-animation-name:            rotate;
+        -webkit-animation-duration:        10.0s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+    }
+
+  </style>
+
+</head>
+
+<body>
+  <div id="jumbo1" class="jumbotron" align="center">
+    <div class="container">
+      <div id="title1">
+        <img id='img1' src="https://farm9.staticflickr.com/8090/8381657553_8725a74ac1.jpg" width="110" height="110" alt="">
+        <img id='img2' src="https://farm9.staticflickr.com/8090/8381657553_8725a74ac1.jpg" width="110" height="110" alt="">
+        <h2 id="h2u"><em><strong>Welcome to Stellie's Guess & Memory Game</strong></em></h2>
+      </div>
+      <h4 id="h4u"></h4>
+      <h4 id="endResult"></h4>
+      <div id="startBtn">
+        <h4 id="timerLabel">00:00:00</h4>
+      </div>
+      <div id="buttons12" class="container">
+        <input type="button" id="startGame" value="  Start Game  " class="startButton" onclick="startGame()">
+        <input type="button" id="stopBtn" value="  Reload Game  " class="myButton" onclick="initialize()">
+      </div>
+      <h2 id="h4js"><strong>Author : Johan Swan</strong></h2>
+      <table class="blocksman">
+        <tr>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+        </tr>
+        <tr>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+        </tr>
+        <tr>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+        </tr>
+        <tr>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+          <td> <button type="button"></button></td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <script src="http://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+      <!-- <script src='Stellie_Guess.js'></script> -->
+  <div id="rulesOgame" class="jumbotron">
+    <div class="container">
+      <h3 id='strules' style=text-align:center;><em>Game Notes</em></h3>
+      <p>The aim of this game is to click 2 blocks with the same numerical value consecutively, in order to complete 2 blocks. There are 60 blocks in this game to complete. To start a game click the <strong>'Start Game'</strong> button. You will then be
+        prompted to enter your name before the game will start. When the game is in progress, you will NOT be able to click the <strong> 'Start Game'.</strong> button. To stop the game at any time, click the
+        <strong>'Reload Game'</strong> button. You will then be able to click the <strong>'Start Game'</strong> button' to start another game.
+    </div>
+  </div>
+      <script src="http://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+      <script>
+        console.log("AUTHOR: Johan Swan");
+        console.log("TITLE: Stellie's Guess & Memory Game");
+        console.log("PROGRAMMING LANGUAGE: JavaScript / Jquery");
+
+        function checkDuplicates(row, col) {
+          newItem = table.eq(row).find('td').eq(col).find('button').text()
+          oldItem = table.eq(storeRow).find('td').eq(storeCol).find('button').text()
+          if (newItem === oldItem) {
+            table.eq(row).find('td').eq(col).find('button').fadeOut(2000)
+            table.eq(row).find('td').eq(col).find('button').fadeIn(2000)
+            table.eq(row).find('td').eq(col).find('button').css('background', 'linear-gradient(to bottom, #99ff33 0%, #66ffff 100%)')
+            table.eq(row).find('td').eq(col).find('button').text("Y")
+            table.eq(storeRow).find('td').eq(storeCol).find('button').fadeOut(2000)
+            table.eq(storeRow).find('td').eq(storeCol).find('button').fadeIn(2000)
+            table.eq(storeRow).find('td').eq(storeCol).find('button').css('background', 'linear-gradient(to bottom, #99ff33 0%, #66ffff 100%)')
+            table.eq(storeRow).find('td').eq(storeCol).find('button').text("Y")
+            storeArray[[col, row]] = newValue
+            storeArray[[storeCol, storeRow]] = newValue
+            newValue += 1
+            gameCheckCntr += 1
+            if (gameCheckCntr >= 30) {
+              if (gameEndTrigger === 'n') {
+                gameEnd()
+              }
+            } else {
+              $('#h4u').css('color', 'darkred')
+              $('#h4u').text("Well done - Good luck - continue Game")
+              saveMovesCurr1 += 1
+              OneOn = 1
+            }
+          } else {
+            table.eq(storeRow).find('td').eq(storeCol).find('button').css('background-color', 'powderblue')
+            table.eq(storeRow).find('td').eq(storeCol).find('button').text("")
+            saveRow = row
+            saveCol = col
+            storeCol = col
+            storeRow = row
+            OneOn = 2
+            $('#h4u').css('color', 'navy')
+            $('#h4u').text("WRONG !!! - Try again by clicking a block - good luck !")
+            saveMovesCurr1 += 1
+          }
+        }
+
+        function displayWrongBoxMess() {
+          $('#h4u').css('color', 'navy')
+          $('#h4u').text("This Box is already completed - Please Click another Box !")
+        }
+
+        function handleBlockContent(row, col) {
+          if (gameCheckCntr < 30) {
+            if (storeArray[[col, row]] >= 50) {
+              displayWrongBoxMess()
+            } else {
+              table.eq(row).find('td').eq(col).find('button').css('background-color', 'white')
+              table.eq(row).find('td').eq(col).find('button').text(storeArray[[col, row]])
+              if (OneOn === 1) {
+                saveRow = row
+                saveCol = col
+                storeCol = col
+                storeRow = row
+                OneOn = 2
+              } else if (saveRow == row && saveCol == col) {
+                displayWrongBoxMess()
+              } else {
+                checkDuplicates(row, col)
+              }
+            }
+          }
+        }
+
+        function clicked() {
+          clickedCol = this.cellIndex
+          clickedRow = this.parentNode.rowIndex
+          handleBlockContent(clickedRow, clickedCol)
+        }
+
+        function eventListen() {
+          for (var i = 0; i < blocks.length; i++) {
+            blocks[i].addEventListener('click', clicked)
+          }
+        }
+
+        function gameEnd() {
+            saveMin = min
+            saveSec = sec
+            stop()
+            $("#endResult").text("Click the 'Reload Game' Button to reload the game - Then click the 'Start Game' Button to start a new game !")
+            $('#h4u').css('fontSize', '18px')
+            $("#h4u").text("Well done  " + currentPlayer + " --- Game Completed in " + saveMin + " minutes and " + sec + " seconds in " + saveMovesCurr1 + " steps")
+            gameEndTrigger = 'y'
+            document.getElementById("startGame").disabled = true;
+        }
+
+        function patheticTime() {
+        stop()
+        for (var x = 0; x < 15; x++) {
+            for (var y = 0; y < 4; y++) {
+                table.eq(y).find('td').eq(x).find('button').fadeOut(1800)
+                table.eq(y).find('td').eq(x).find('button').fadeIn(1800)
+                table.eq(y).find('td').eq(x).find('button').css('background', 'linear-gradient(to bottom, #99ff33 0%, #66ffff 100%)')
+                table.eq(y).find('td').eq(x).find('button').text("")
+            }
+        }
+        $("#endResult").text("Click the 'Reload Game' Button to reload the game - Then click the 'Start Game' Button to start a new game !")
+        $('#h4u').css('fontSize', '18px')
+        $("#h4u").text("WHAT THE HECK !!! " + currentPlayer + " You have taken more than 55 minutes - Try again")
+        }
+
+        function start() {
+          status = 1;
+          document.getElementById('startBtn').disabled = true;
+          timer()
+        }
+
+        function stop() {
+          status = 0;
+          document.getElementById('startBtn').disabled = false;
+        }
+
+        function timer() {
+          if (status == 1) {
+            setTimeout(function() {
+              time++;
+              min = Math.floor(time / 100 / 60);
+              sec = Math.floor(time / 100);
+              mSec = time % 100;
+              if (min < 10) {
+                min = '0' + min;
+              }
+              if (sec >= 60) {
+                sec = sec % 60;
+              }
+              if (sec < 10) {
+                sec = '0' + sec;
+              }
+              document.getElementById('timerLabel').innerHTML = min + ':' + sec + ':' + mSec;
+              if (min > 55) {
+                  patheticTime()
+              }
+              timer();
+            }, 10);
+          }
+        }
+
+        function startGame() {
+          document.getElementById("startGame").disabled = true;
+          while (true) {
+            currentPlayer = window.prompt("Enter name with more than 3 and less than 26 characters to start the game: ");
+            stringE = currentPlayer.trim();
+            if (stringE.length > 3 && stringE.length < 26) {
+              currentPlayer = stringE
+              break
+            }
+          }
+          if (gameEndTrigger === 'n') {
+            if (firstTime === 'y') {
+              $('#h4u').text("Hi " + currentPlayer + " - Welcome - click a box to start - aim is to find 2 of the same values")
+              firstTime = 'n'
+            }
+          }
+          start()
+          $('.blocksman button').on('click', function() {
+            if (gameEndTrigger === 'n') {
+              $('#h4u').text("Click on a block to continue the game")
+            }
+            eventListen()
+            if (gameCheckCntr >= 30) {
+              if (gameEndTrigger === 'n') {
+                gameEnd()
+              }
+            }
+          })
+        }
+
+        function initialize() {
+          stop()
+          location.reload()
+        }
+
+        var table = $('table tr');
+
+        var blocks = document.querySelectorAll('td');
+
+        var saveRow = 0
+        var saveCol = 0
+        var oldItem = ''
+        var newItem = ''
+        var newValue = 50
+        var clickedRow = 0
+        var clickedCol = 0
+        var storeRow = 0
+        var storeCol = 0
+        var OneOn = 1
+        var gameCheckCntr = 0
+        var cntr1 = 0
+        var saveMovesCurr1 = 0
+        var saveMoves1 = ''
+        var saveM1 = 0
+        var saveS1 = 0
+        var savMS1 = 0
+        var saveMoves2 = ''
+        var savM2 = 0
+        var savS2 = 0
+        var saveMoves3 = ''
+        var saveM3 = 0
+        var saveS3 = 0
+        var Splayer1 = ''
+        var Splayer2 = ''
+        var Splayer3 = ''
+        var time = 0
+        var status = 0
+        var min = 0
+        var saveMin = 0
+        var saveSec = 0
+        var sec = 0
+        var mSec = 0
+        var poSition = 0
+        var gameEndTrigger = 'n'
+        var firstTime = 'y'
+        var firstMessage = 'y'
+        var cList = 0
+        var currentPlayer = ''
+        var stringE = ''
+
+        var storeArray = [
+          [0]
+        ]
+
+        list1 = []
+
+        for (var n = 1; n < 31; n++) {
+          cList = (Math.round(Math.random() * 29))
+          list1.splice(cList, 0, n);
+          cList = (Math.round(Math.random() * 29))
+          list1.splice(cList, 0, n);
+        }
+
+        for (var x = 0; x < 15; x++) {
+          for (var y = 0; y < 4; y++) {
+            storeArray[[x, y]] = list1[cntr1]
+            cntr1 += 1
+          }
+        }
+
+        document.getElementById("startGame").disabled = false;
+        document.getElementById("stopBtn").disabled = false;
+
+        var header = document.querySelector("#h2u")
+
+        header.style.color = 'navy'
+
+        function getRandomColor(){
+        var letters = "0123456789ABCDEF";
+        var color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random()*12)];
+          }
+        return color
+        }
+
+        function changeHeaderColor(){
+            colorInput = getRandomColor()
+            header.style.color = colorInput;
+        }
+
+        setInterval("changeHeaderColor()",450);
+
+        $(document).ready(function(){
+            var doc = document.getElementById("rulesOgame");
+            var color = ["cornsilk", "darkkhaki", "darkseagreen", "greenyellow", "lightcyan", "mediumspringgreen", "rosybrown", "powderblue", "papayawhip"];
+            var i = 0;
+            function changeRc() {
+                doc.style.backgroundColor = color[i];
+                i++;
+                if(i > color.length - 1) {
+                    i = 0;
+                }
+            }
+            setInterval(changeRc, 1500);
+        })
+      </script>
+</body>
+
+</html>
